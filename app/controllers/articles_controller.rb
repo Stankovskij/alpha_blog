@@ -27,11 +27,12 @@ class ArticlesController < ApplicationController
 	end
 
 	def update
+		@user = User.find(params[:id])
 		if @article.update(article_params)
 			flash[:notice] = "Article was updated successfully."
 			redirect_to @article
 		else
-			render "edit"
+			render 'edit'
 		end
 	end
 
