@@ -7,13 +7,11 @@ module ApplicationHelper
 		image_tag(gravatar_url, alt: user.username, class: "rounded shadow mx-auto d-block")
 	end
 
-	def current_user
-		if session[:user_id] 
-			@current_user ||= User.find(session[:user_id])
+	def alert_class(flash_msg)
+		if flash_msg == "notice"
+			return "alert-success"
+		elsif flash_msg == "alert"
+			return "alert-danger"
 		end
 	end
-
-	 def logged_in?
-    	!!current_user
-  	 end
 end
